@@ -17,15 +17,15 @@ The goals / steps of this project are the following:
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
 My pipeline consisted of 5 steps. 
-First, I converted the images to grayscale;
-Second, I applied gaussion filter to reduce noise in the gray image; 
-Third, I extracted edges using canny function; 
-Fourth, I defined and extracted a triangle area which contains the lane lines;
-Fifth, I detected lane lines with specific parameters. 
+* First, I converted the images to grayscale;
+* Second, I applied gaussion filter to reduce noise in the gray image; 
+* Third, I extracted edges using canny function; 
+* Fourth, I defined and extracted a triangle area which contains the lane lines;
+* Fifth, I detected lane lines with specific parameters. 
 
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function by
-First, I separated the line segments into two line sets: left lines and right lines; 
-Then, I compute a single left and right lane line given these two line sets; 
+* First, I separated the line segments into two line sets: left lines and right lines; 
+* Then, I compute a single left and right lane line given these two line sets; 
 
 ### 2. Identify potential shortcomings with your current pipeline
 
