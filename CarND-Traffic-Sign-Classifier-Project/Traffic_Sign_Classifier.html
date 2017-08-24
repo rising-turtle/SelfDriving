@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>Traffic_Sign_Classifier</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Traffic_Sign_Classifier</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -13,8 +11,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1109,7 +1107,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2538,7 +2535,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3029,7 +3025,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8760,6 +8755,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8962,8 +8960,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8986,6 +8990,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9122,6 +9136,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9211,6 +9228,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9255,6 +9275,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9551,6 +9574,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9571,11 +9595,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11246,7 +11265,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11558,6 +11577,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11571,6 +11591,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11631,8 +11654,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11643,9 +11668,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11699,9 +11726,7 @@ body {
 div#notebook {
   overflow: visible;
   border-top: none;
-}
-
-@media print {
+}@media print {
   div.cell {
     display: block;
     page-break-inside: avoid;
@@ -11722,7 +11747,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -11746,8 +11771,7 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11763,8 +11787,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11775,10 +11798,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Load pickled data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load pickled data</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 
 <span class="c1"># TODO: Fill this in based on where you saved the training and testing data</span>
@@ -11804,8 +11827,7 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11822,8 +11844,7 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11833,13 +11854,13 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">### Replace each question mark with the appropriate value. </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Replace each question mark with the appropriate value. </span>
 <span class="c1">### Use python, pandas or numpy methods rather than hard coding the results</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
 <span class="c1"># TODO: Number of training examples</span>
@@ -11860,11 +11881,11 @@ div#notebook {
 <span class="c1"># TODO: How many unique classes/labels there are in the dataset.</span>
 <span class="n">n_classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train</span><span class="p">))</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Number of training examples =&quot;</span><span class="p">,</span> <span class="n">n_train</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Number of validataion examples = &quot;</span><span class="p">,</span> <span class="n">n_validation</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Number of testing examples =&quot;</span><span class="p">,</span> <span class="n">n_test</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Image data shape =&quot;</span><span class="p">,</span> <span class="n">image_shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Number of classes =&quot;</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of training examples =&quot;</span><span class="p">,</span> <span class="n">n_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of validataion examples = &quot;</span><span class="p">,</span> <span class="n">n_validation</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of testing examples =&quot;</span><span class="p">,</span> <span class="n">n_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Image data shape =&quot;</span><span class="p">,</span> <span class="n">image_shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of classes =&quot;</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11875,7 +11896,11 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Number of training examples = 34799
 Number of validataion examples =  4410
@@ -11890,8 +11915,7 @@ Number of classes = 43
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11899,8 +11923,7 @@ Number of classes = 43
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11913,12 +11936,12 @@ Number of classes = 43
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">### Data exploration visualization code goes here.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Data exploration visualization code goes here.</span>
 <span class="c1">### Feel free to use as many code cells as needed.</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="c1"># Visualizations will be shown in the notebook.</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 
@@ -11926,15 +11949,15 @@ Number of classes = 43
 <span class="c1">### labels&#39;s distribution </span>
 <span class="c1">### show one sample </span>
 <span class="k">def</span> <span class="nf">stat_data</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">sample_id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Labels within {} labels Counts: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">[:</span><span class="n">n</span><span class="p">],</span> <span class="n">return_counts</span><span class="o">=</span><span class="bp">True</span><span class="p">)))))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;First {} labels: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">y</span><span class="p">[:</span><span class="n">n</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Labels within </span><span class="si">{}</span><span class="s1"> labels Counts: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">[:</span><span class="n">n</span><span class="p">],</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)))))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First </span><span class="si">{}</span><span class="s1"> labels: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">y</span><span class="p">[:</span><span class="n">n</span><span class="p">]))</span>
     
     <span class="n">sample_image</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">sample_id</span><span class="p">]</span>
     <span class="n">sample_label</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">sample_id</span><span class="p">]</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Example of Image {}:&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sample_id</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Image - Min Value: {} Max Value: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sample_image</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">sample_image</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Image - Shape: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sample_image</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Label - Label Id: {} Name: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sample_label</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">sample_label</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Example of Image </span><span class="si">{}</span><span class="s1">:&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sample_id</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Image - Min Value: </span><span class="si">{}</span><span class="s1"> Max Value: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sample_image</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">sample_image</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Image - Shape: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sample_image</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Label - Label Id: </span><span class="si">{}</span><span class="s1"> Name: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sample_label</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">sample_label</span><span class="p">]))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sample_image</span><span class="p">)</span>
 
@@ -11967,114 +11990,126 @@ Number of classes = 43
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-Labels within 20 labels Counts: {2: 3, 4: 2, 5: 1, 10: 2, 12: 1, 13: 1, 18: 1, 24: 1, 25: 1, 26: 2, 29: 1, 33: 1, 36: 1, 39: 1, 40: 1}
-First 20 labels: [26, 2, 40, 2, 2, 12, 4, 4, 18, 13, 26, 36, 25, 24, 10, 5, 29, 10, 33, 39]
+Labels within 20 labels Counts: {2: 1, 3: 1, 4: 1, 5: 2, 8: 2, 9: 1, 12: 1, 14: 1, 15: 1, 17: 1, 22: 1, 23: 1, 25: 2, 29: 1, 30: 1, 34: 1, 38: 1}
+First 20 labels: [29, 3, 25, 12, 38, 4, 17, 25, 30, 34, 22, 15, 8, 8, 23, 14, 5, 9, 5, 2]
 Example of Image 7:
-Image - Min Value: 6 Max Value: 26
+Image - Min Value: 63 Max Value: 170
 Image - Shape: (32, 32, 3)
-Label - Label Id: 4 Name: 2
+Label - Label Id: 25 Name: 37
 
-Labels within 20 labels Counts: {1: 3, 3: 2, 8: 2, 9: 2, 10: 1, 12: 1, 13: 1, 14: 1, 15: 1, 17: 1, 20: 1, 25: 1, 33: 1, 38: 2}
-First 20 labels: [38, 1, 8, 9, 1, 13, 3, 20, 14, 10, 12, 9, 33, 15, 38, 1, 17, 3, 25, 8]
+Labels within 20 labels Counts: {1: 1, 2: 1, 9: 1, 10: 1, 12: 2, 13: 1, 14: 1, 15: 1, 16: 1, 17: 1, 19: 1, 23: 1, 25: 1, 26: 1, 34: 1, 38: 2, 40: 1, 42: 1}
+First 20 labels: [25, 12, 12, 10, 34, 42, 38, 15, 38, 23, 2, 19, 14, 40, 9, 16, 17, 1, 26, 13]
 Example of Image 7:
-Image - Min Value: 13 Max Value: 178
+Image - Min Value: 14 Max Value: 163
 Image - Shape: (32, 32, 3)
-Label - Label Id: 20 Name: 19
+Label - Label Id: 15 Name: 16
 </pre>
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 
 
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,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
-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
-YII=
+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
 "
 >
 </div>
@@ -12085,8 +12120,7 @@ YII=
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12106,8 +12140,7 @@ YII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12115,8 +12148,7 @@ YII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12129,10 +12161,10 @@ YII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">### Preprocess the data here. It is required to normalize the data. Other preprocessing steps could include </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Preprocess the data here. It is required to normalize the data. Other preprocessing steps could include </span>
 <span class="c1">### converting to grayscale, etc.</span>
 <span class="c1">### Feel free to use as many code cells as needed.</span>
 
@@ -12159,9 +12191,9 @@ YII=
 <span class="n">X_train_norm</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">X_train_s</span><span class="p">)</span>
 <span class="n">X_valid_norm</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">X_valid_s</span><span class="p">)</span>
 <span class="n">X_test_norm</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;X_train_max : {} min: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">X_train_norm</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">X_train_norm</span><span class="p">)))</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;X_train_max : {} min: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">X_valid_norm</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">X_valid_norm</span><span class="p">)))</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;X_train_max : {} min: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">X_test_norm</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">X_test_norm</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X_train_max : </span><span class="si">{}</span><span class="s1"> min: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">X_train_norm</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">X_train_norm</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X_train_max : </span><span class="si">{}</span><span class="s1"> min: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">X_valid_norm</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">X_valid_norm</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X_train_max : </span><span class="si">{}</span><span class="s1"> min: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">X_test_norm</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">X_test_norm</span><span class="p">)))</span>
 
 
 <span class="k">def</span> <span class="nf">one_hot_encode</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
@@ -12171,7 +12203,7 @@ YII=
 <span class="n">y_valid_v</span> <span class="o">=</span> <span class="n">one_hot_encode</span><span class="p">(</span><span class="n">y_valid_s</span><span class="p">)</span>
 <span class="n">y_test_v</span>  <span class="o">=</span> <span class="n">one_hot_encode</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;y_train_v.shape = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">y_train_v</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y_train_v.shape = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">y_train_v</span><span class="p">)))</span>
 </pre></div>
 
 </div>
@@ -12182,7 +12214,11 @@ YII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>X_train_max : 1.0 min: 0.0
 X_train_max : 1.0 min: 0.0
@@ -12198,15 +12234,15 @@ y_train_v.shape = (34799, 43)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># print(&#39;X_train_s.shape: {}&#39;.format(np.shape(X_train_s)))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># print(&#39;X_train_s.shape: {}&#39;.format(np.shape(X_train_s)))</span>
 <span class="c1"># print(&#39;X_train_norm.shape: {}&#39;.format(np.shape(X_train_norm)))</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">X_train_s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;img shape: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">img</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;img shape: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">img</span><span class="p">)))</span>
 <span class="n">gray</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;gray shape: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">gray</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;gray shape: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">gray</span><span class="p">)))</span>
 </pre></div>
 
 </div>
@@ -12217,7 +12253,11 @@ y_train_v.shape = (34799, 43)
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>img shape: (32, 32, 3)
 gray shape: (32, 32, 1)
@@ -12229,8 +12269,154 @@ gray shape: (32, 32, 1)
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### try to build the model using Keres</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">keras.models</span> <span class="k">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">keras.layers.core</span> <span class="k">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">SpatialDropout2D</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="k">import</span> <span class="n">Conv2D</span>
+<span class="kn">from</span> <span class="nn">keras.layers.pooling</span> <span class="k">import</span> <span class="n">MaxPooling2D</span>
+
+<span class="n">keep_prob</span> <span class="o">=</span> <span class="mf">0.9</span>
+
+<span class="c1"># build model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="c1"># Conv Layer1: Input = 32 * 32 * 1, Output = 28 * 28 * 6</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;VALID&#39;</span><span class="p">))</span>
+<span class="c1"># Activation </span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="c1"># MaxPooling 28 * 28 * 6 -&gt; 14 * 14 * 6</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+<span class="c1"># add Spatial Dropout2D</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">SpatialDropout2D</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="c1"># Conv Layer2: Input  14 * 14 * 6, Output = 10 * 10 * 16</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;VALID&#39;</span><span class="p">))</span>
+<span class="c1"># Activation</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="c1"># MaxPooling 10 * 10 * 16 -&gt; 5 * 5 * 16</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">SpatialDropout2D</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="c1"># Flatten 400</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
+<span class="c1"># dense 1 </span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="n">keep_prob</span><span class="p">))</span>
+
+<span class="c1"># dense 2</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="n">keep_prob</span><span class="p">))</span>
+
+<span class="c1"># logits</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">n_classes</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># train model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_norm</span><span class="p">,</span> <span class="n">y_train_v</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Validation data&#39;</span><span class="p">)</span>
+<span class="n">vm</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_valid_norm</span><span class="p">,</span> <span class="n">y_valid_v</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">mi</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">metrics_names</span><span class="p">)):</span>
+    <span class="n">metric_name</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">metrics_names</span><span class="p">[</span><span class="n">mi</span><span class="p">]</span>
+    <span class="n">metric_value</span> <span class="o">=</span> <span class="n">vm</span><span class="p">[</span><span class="n">mi</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">metric_name</span><span class="p">,</span> <span class="n">metric_value</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test data&#39;</span><span class="p">)</span>
+<span class="n">tm</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test_norm</span><span class="p">,</span> <span class="n">y_test_v</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">mi</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">metrics_names</span><span class="p">)):</span>
+    <span class="n">metric_name</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">metrics_names</span><span class="p">[</span><span class="n">mi</span><span class="p">]</span>
+    <span class="n">metric_value</span> <span class="o">=</span> <span class="n">tm</span><span class="p">[</span><span class="n">mi</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">metric_name</span><span class="p">,</span> <span class="n">metric_value</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Epoch 1/20
+34799/34799 [==============================] - 21s - loss: 3.5928 - acc: 0.0530    
+Epoch 2/20
+34799/34799 [==============================] - 21s - loss: 3.3541 - acc: 0.0830    
+Epoch 3/20
+34799/34799 [==============================] - 21s - loss: 3.0053 - acc: 0.1492    
+Epoch 4/20
+34799/34799 [==============================] - 20s - loss: 2.7391 - acc: 0.1997    
+Epoch 5/20
+34799/34799 [==============================] - 22s - loss: 2.5631 - acc: 0.2407    
+Epoch 6/20
+34799/34799 [==============================] - 24s - loss: 2.4449 - acc: 0.2566    
+Epoch 7/20
+34799/34799 [==============================] - 21s - loss: 2.3662 - acc: 0.2680    
+Epoch 8/20
+34799/34799 [==============================] - 24s - loss: 2.3114 - acc: 0.2774    
+Epoch 9/20
+34799/34799 [==============================] - 22s - loss: 2.2698 - acc: 0.2847    
+Epoch 10/20
+34799/34799 [==============================] - 24s - loss: 2.2264 - acc: 0.2914    
+Epoch 11/20
+34799/34799 [==============================] - 23s - loss: 2.1885 - acc: 0.3029    
+Epoch 12/20
+34799/34799 [==============================] - 23s - loss: 2.1661 - acc: 0.3059    
+Epoch 13/20
+34799/34799 [==============================] - 26s - loss: 2.1521 - acc: 0.3117    
+Epoch 14/20
+34799/34799 [==============================] - 24s - loss: 2.1260 - acc: 0.3175    
+Epoch 15/20
+34799/34799 [==============================] - 24s - loss: 2.1123 - acc: 0.3205    
+Epoch 16/20
+34799/34799 [==============================] - 25s - loss: 2.0899 - acc: 0.3264    
+Epoch 17/20
+34799/34799 [==============================] - 24s - loss: 2.0697 - acc: 0.3308    
+Epoch 18/20
+34799/34799 [==============================] - 25s - loss: 2.0570 - acc: 0.3362    
+Epoch 19/20
+34799/34799 [==============================] - 25s - loss: 2.0440 - acc: 0.3421    
+Epoch 20/20
+34799/34799 [==============================] - 25s - loss: 2.0258 - acc: 0.3453    
+Validation data
+4410/4410 [==============================] - 1s     
+loss:1.5508492598998573
+acc:0.5020408163332885
+Test data
+12544/12630 [============================&gt;.] - ETA: 0sloss:1.4860872802145408
+acc:0.5125098970657479
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12243,9 +12429,9 @@ gray shape: (32, 32, 1)
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">### Define your architecture here.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Define your architecture here.</span>
 <span class="c1">### Feel free to use as many code cells as needed.</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 
 <span class="c1"># print(&#39;X_train_norm shape: {}&#39;.format(np.shape(X_train_norm)))</span>
     
@@ -12316,12 +12502,12 @@ gray shape: (32, 32, 1)
 <span class="c1"># tf.reset_default_graph()</span>
 
 <span class="k">def</span> <span class="nf">neural_net_image_input</span><span class="p">(</span><span class="n">image_shape</span><span class="p">):</span>
-    <span class="n">input_i</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="o">*</span><span class="n">image_shape</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">input_i</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">image_shape</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">input_i</span>
 
 
 <span class="k">def</span> <span class="nf">neural_net_label_input</span><span class="p">(</span><span class="n">n_classes</span><span class="p">):</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">label</span>
 
 <span class="k">def</span> <span class="nf">neural_net_keep_prob_input</span><span class="p">():</span>
@@ -12334,8 +12520,7 @@ gray shape: (32, 32, 1)
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12343,8 +12528,7 @@ gray shape: (32, 32, 1)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12359,7 +12543,7 @@ sets imply underfitting. A high accuracy on the training set but low accuracy on
 <div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">### Train your model here.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Train your model here.</span>
 <span class="c1">### Calculate and report the accuracy on the training and validation set.</span>
 <span class="c1">### Once a final model architecture is selected, </span>
 <span class="c1">### the accuracy on the test set should be calculated and reported as well.</span>
@@ -12389,7 +12573,7 @@ sets imply underfitting. A high accuracy on the training set but low accuracy on
     <span class="c1"># Calculate batch loss and accuracy</span>
     <span class="n">loss</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cost</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">feature_batch</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">label_batch</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">:</span><span class="mf">1.</span><span class="p">})</span>
     <span class="n">valid_acc</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">X_valid_norm</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">y_valid_v</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">:</span> <span class="mf">1.</span><span class="p">})</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Loss: {:&gt;10.4f} Validation Accuracy: {:.6f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loss: </span><span class="si">{:&gt;10.4f}</span><span class="s1"> Validation Accuracy: </span><span class="si">{:.6f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">loss</span><span class="p">,</span>
                 <span class="n">valid_acc</span><span class="p">))</span>
     
@@ -12443,18 +12627,18 @@ sets imply underfitting. A high accuracy on the training set but low accuracy on
                 <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span><span class="n">batch_x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="n">batch_y</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">:</span><span class="mf">0.95</span><span class="p">})</span>
                 
                 <span class="k">if</span> <span class="n">batch_i</span> <span class="o">%</span> <span class="mi">30</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Epoch {:&gt;2}, Batch {}:  &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">batch_i</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Epoch </span><span class="si">{:&gt;2}</span><span class="s1">, Batch </span><span class="si">{}</span><span class="s1">:  &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">batch_i</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
                     <span class="c1"># print_stats(sess, batch_x, batch_y, cost, accuracy)</span>
                     <span class="n">loss</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cost</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">batch_x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">batch_y</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">:</span><span class="mf">1.</span><span class="p">})</span>
                     <span class="n">valid_acc</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">X_valid_norm</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">y_valid_v</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">:</span> <span class="mf">1.</span><span class="p">})</span>
-                    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Loss: {:&gt;10.4f} Validation Accuracy: {:.6f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">valid_acc</span><span class="p">))</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loss: </span><span class="si">{:&gt;10.4f}</span><span class="s1"> Validation Accuracy: </span><span class="si">{:.6f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">valid_acc</span><span class="p">))</span>
         
         <span class="c1">### finish training </span>
         <span class="n">test_acc</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span>
                 <span class="n">x</span><span class="p">:</span> <span class="n">X_test_norm</span><span class="p">,</span>
                 <span class="n">y</span><span class="p">:</span> <span class="n">y_test_v</span><span class="p">,</span>
                 <span class="n">keep_prob</span><span class="p">:</span> <span class="mf">1.</span><span class="p">})</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;After training, Test Accuracy: {:.6f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">test_acc</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After training, Test Accuracy: </span><span class="si">{:.6f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">test_acc</span><span class="p">))</span>
         <span class="c1"># Save Model</span>
         <span class="n">saver</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">Saver</span><span class="p">()</span>
         <span class="n">save_path</span> <span class="o">=</span> <span class="n">saver</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="n">save_model_path</span><span class="p">)</span>
@@ -12478,7 +12662,11 @@ sets imply underfitting. A high accuracy on the training set but low accuracy on
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Epoch  1, Batch 0:  Loss:     3.7284 Validation Accuracy: 0.053288
 Epoch  1, Batch 30:  Loss:     3.4824 Validation Accuracy: 0.054422
@@ -12869,8 +13057,7 @@ After training, Test Accuracy: 0.901900
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12881,8 +13068,7 @@ After training, Test Accuracy: 0.901900
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12895,7 +13081,7 @@ After training, Test Accuracy: 0.901900
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">### Load the images and plot them here.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Load the images and plot them here.</span>
 <span class="c1">### Feel free to use as many code cells as needed.</span>
 
 <span class="kn">import</span> <span class="nn">cv2</span>
@@ -12912,7 +13098,7 @@ After training, Test Accuracy: 0.901900
 <span class="n">img4</span> <span class="o">=</span> <span class="n">readImg</span><span class="p">(</span><span class="s1">&#39;./GTSRB/Final_Test/Images/01149.ppm&#39;</span><span class="p">)</span>
 <span class="n">img5</span> <span class="o">=</span> <span class="n">readImg</span><span class="p">(</span><span class="s1">&#39;./GTSRB/Final_Test/Images/00034.ppm&#39;</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;img1.shape: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">img1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;img1.shape: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">img1</span><span class="p">)))</span>
 
 <span class="n">test_imgs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">test_imgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img1</span><span class="p">)</span>
@@ -12929,7 +13115,7 @@ After training, Test Accuracy: 0.901900
     <span class="mi">2</span> <span class="c1"># 2, Speed limit (50km/h)</span>
 <span class="p">]</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;test_imgs.shape: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">test_imgs</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;test_imgs.shape: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">test_imgs</span><span class="p">)))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img2</span><span class="p">)</span>
@@ -12944,7 +13130,11 @@ After training, Test Accuracy: 0.901900
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>img1.shape: (32, 32, 3)
 test_imgs.shape: (5, 32, 32, 3)
@@ -12952,7 +13142,11 @@ test_imgs.shape: (5, 32, 32, 3)
 </div>
 </div>
 
-<div class="output_area"><div class="prompt output_prompt">Out[26]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[26]:</div>
+
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12961,7 +13155,11 @@ test_imgs.shape: (5, 32, 32, 3)
 
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 
 
 <div class="output_png output_subarea ">
@@ -13064,8 +13262,7 @@ QmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13078,7 +13275,7 @@ QmCC
 <div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">### Run the predictions here and use the model to output the prediction for each image.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Run the predictions here and use the model to output the prediction for each image.</span>
 <span class="c1">### Make sure to pre-process the images with the same pre-processing pipeline used earlier.</span>
 <span class="c1">### Feel free to use as many code cells as needed.</span>
 
@@ -13103,7 +13300,7 @@ QmCC
     
     <span class="c1"># Accuracy</span>
     <span class="n">accuracy</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">loaded_acc</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">loaded_x</span><span class="p">:</span> <span class="n">imgs_norm</span><span class="p">,</span> <span class="n">loaded_y</span><span class="p">:</span><span class="n">img_label</span><span class="p">,</span> <span class="n">loaded_keep_prob</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">})</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Test Accuracy: {}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test Accuracy: </span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy</span><span class="p">))</span>
     
     <span class="c1"># prediction </span>
     <span class="n">top_n_predictions</span> <span class="o">=</span> <span class="mi">5</span>
@@ -13116,9 +13313,9 @@ QmCC
     <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Softmax Predictions&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">img_i</span><span class="p">,</span> <span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">img_label</span><span class="p">,</span> <span class="n">pred_indice</span><span class="p">,</span> <span class="n">pred_prob</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">test_imgs</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">,</span> <span class="n">predictions</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">predictions</span><span class="o">.</span><span class="n">values</span><span class="p">)):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;test_label: {} pred_indices: {} pred_prob: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">img_label</span><span class="p">,</span> <span class="n">pred_indice</span><span class="p">,</span> <span class="n">pred_prob</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;test_label: </span><span class="si">{}</span><span class="s1"> pred_indices: </span><span class="si">{}</span><span class="s1"> pred_prob: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">img_label</span><span class="p">,</span> <span class="n">pred_indice</span><span class="p">,</span> <span class="n">pred_prob</span><span class="p">))</span>
         <span class="n">axies</span><span class="p">[</span><span class="n">img_i</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-        <span class="n">axies</span><span class="p">[</span><span class="n">img_i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;test label: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">img_label</span><span class="p">))</span>
+        <span class="n">axies</span><span class="p">[</span><span class="n">img_i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;test label: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">img_label</span><span class="p">))</span>
         <span class="n">axies</span><span class="p">[</span><span class="n">img_i</span><span class="p">]</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
     
     
@@ -13133,7 +13330,11 @@ QmCC
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>INFO:tensorflow:Restoring parameters from ./image_classification
 Test Accuracy: 1.0
@@ -13151,7 +13352,11 @@ test_label: 2 pred_indices: [2 1 5 3 7] pred_prob: [  1.00000000e+00   4.7434213
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 
 
 <div class="output_png output_subarea ">
@@ -13434,8 +13639,7 @@ S8QQxSViiOISMURxiRiiuEQMUVwihvwDJKgYoGepi40AAAAASUVORK5CYII=
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13448,7 +13652,7 @@ S8QQxSViiOISMURxiRiiuEQMUVwihvwDJKgYoGepi40AAAAASUVORK5CYII=
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">### Calculate the accuracy for these 5 new images. </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Calculate the accuracy for these 5 new images. </span>
 <span class="c1">### For example, if the model predicted 1 out of 5 signs correctly, it&#39;s 20% accurate on these new images.</span>
 </pre></div>
 
@@ -13457,8 +13661,7 @@ S8QQxSViiOISMURxiRiiuEQMUVwihvwDJKgYoGepi40AAAAASUVORK5CYII=
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13466,8 +13669,7 @@ S8QQxSViiOISMURxiRiiuEQMUVwihvwDJKgYoGepi40AAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13508,7 +13710,7 @@ a = np.array([[ 0.24879643,  0.07032244,  0.12641572,  0.34763842,  0.07893497,
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">### Print out the top five softmax probabilities for the predictions on the German traffic sign images found on the web. </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Print out the top five softmax probabilities for the predictions on the German traffic sign images found on the web. </span>
 <span class="c1">### Feel free to use as many code cells as needed.</span>
 </pre></div>
 
@@ -13520,7 +13722,11 @@ a = np.array([[ 0.24879643,  0.07032244,  0.12641572,  0.34763842,  0.07893497,
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 <div class="output_subarea output_text output_error">
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
@@ -13540,8 +13746,7 @@ a = np.array([[ 0.24879643,  0.07032244,  0.12641572,  0.34763842,  0.07893497,
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13550,8 +13755,7 @@ a = np.array([[ 0.24879643,  0.07032244,  0.12641572,  0.34763842,  0.07893497,
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13562,8 +13766,7 @@ a = np.array([[ 0.24879643,  0.07032244,  0.12641572,  0.34763842,  0.07893497,
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13588,7 +13791,7 @@ a = np.array([[ 0.24879643,  0.07032244,  0.12641572,  0.34763842,  0.07893497,
 <div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">### Visualize your network&#39;s feature maps here.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Visualize your network&#39;s feature maps here.</span>
 <span class="c1">### Feel free to use as many code cells as needed.</span>
 
 <span class="c1"># image_input: the test image being fed into the network to produce the feature maps</span>
@@ -13628,7 +13831,7 @@ a = np.array([[ 0.24879643,  0.07032244,  0.12641572,  0.34763842,  0.07893497,
 <div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">save_model_path</span> <span class="o">=</span> <span class="s1">&#39;./image_classification&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">save_model_path</span> <span class="o">=</span> <span class="s1">&#39;./image_classification&#39;</span>
 
 <span class="n">loaded_graph</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">loaded_graph</span><span class="p">)</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
@@ -13662,14 +13865,22 @@ a = np.array([[ 0.24879643,  0.07032244,  0.12641572,  0.34763842,  0.07893497,
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>INFO:tensorflow:Restoring parameters from ./image_classification
 </pre>
 </div>
 </div>
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 <div class="output_subarea output_text output_error">
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
@@ -13715,7 +13926,7 @@ a = np.array([[ 0.24879643,  0.07032244,  0.12641572,  0.34763842,  0.07893497,
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
 </div>
@@ -13726,4 +13937,8 @@ a = np.array([[ 0.24879643,  0.07032244,  0.12641572,  0.34763842,  0.07893497,
     </div>
   </div>
 </body>
+
+ 
+
+
 </html>
