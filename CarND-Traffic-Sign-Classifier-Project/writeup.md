@@ -22,10 +22,10 @@ The goals / steps of this project are the following:
 [image1]: ./examples/visualization.jpg "Visualization"
 [image2]: ./examples/grayscale.jpg "Grayscaling"
 [image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./test_imgs/01874.ppm "Traffic Sign 1"
-[image5]: ./test_imgs/01961.ppm "Traffic Sign 2"
-[image6]: ./test_imgs/01932.ppm "Traffic Sign 3"
-[image7]: ./test_imgs/01149.ppm "Traffic Sign 4"
+[image4]: ./test_imgs/00181.jpg "Traffic Sign 1"
+[image5]: ./test_imgs/00198.jpg "Traffic Sign 2"
+[image6]: ./test_imgs/00673.jpg "Traffic Sign 3"
+[image7]: ./test_imgs/01961.jpg "Traffic Sign 4"
 [image8]: ./test_imgs/00034.ppm "Traffic Sign 5"
 
 ## Rubric Points
@@ -99,20 +99,18 @@ Epochs is set as 7, but I see that in the 2nd iteration, the validation accuracy
 
 My final model results were:
 * training set accuracy of 
-* validation set accuracy of 91.3%
-* test set accuracy of 90.19%
+* validation set accuracy of 96.28%  
+* test set accuracy of 95.76% 
 
 If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-As constructed in https://chsasank.github.io/keras-tutorial.html, but I observe that the validation accuracy soon get about ~96, and the rest iteration may not contribute new improvement. This phenonmenon may indicate a probable overfitting case. I simplify the structure by reducing the dense layers and cnn layers, which still work pretty good at ~94.4. 
-
+* What was the first architecture that was tried and why was it chosen? 
 * What were some problems with the initial architecture?
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
 
-The architecture I chose according to the Lesson 8, is the extended LeNet(), by adding dropout layers. To avoid overfitting. 
+** As constructed in https://chsasank.github.io/keras-tutorial.html, but I observe that the validation accuracy soon get about ~96, and the rest iteration may not contribute new improvement. This phenonmenon may indicate a probable overfitting case. I simplify the structure by reducing the dense layers and cnn layers, which still work pretty good at ~94.4.
 
 * Which parameters were tuned? How were they adjusted and why?
-epochs from 7 to 2, since it converges in 2nd round. 
+** epochs from 7 to 2, since it converges in 2nd round. 
 batch_size, a larger value 128 may not increase accuracy. 
 using keras with 'adam' optimizer, using default lr = 0.0001 will work 
 learning_rate from 0.0001 to 0.0003 since the accuracy achieves almost steady at epochs = 15 with 0.0001
@@ -131,13 +129,14 @@ It works well with about 96.28% validation accuracy and 95.76% test accuracy.
 
 ####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-Here are five German traffic signs that I found on the web:
-
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+Here are one German traffic signs that I found on the web:
+![alt text][image7] 
 
 The last two images might be difficult to classify because 30% portion of this image has been blackened. 
+![alt text][image5] ![alt text][image6] 
+
 The sixth image is difficult too due to large blurring effect.
+![alt text][image4] 
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
