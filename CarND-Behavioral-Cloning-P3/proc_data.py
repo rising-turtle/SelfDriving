@@ -9,6 +9,19 @@ def cropImg(img):
                 center[1] -90 : center[1] + 90]
     return img
 
+def handleImg(folder, fname, images, measurement, meas):
+    img_name = folder + '/' + fname
+    image = cv2.imread(img_name)
+    print('read img {}'.format(img_name))
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    img = cropImg(image)
+    images.append(img)
+    measurements.append(measurement)
+    # data augmentation
+    flip_img = np.fliplr(img)
+    images.append(flip_img)
+    measurements.append(-measurement)
+
 lines = []
 with open('./data/driving_log.csv') as csvfile:
     reader = csv.reader(csvfile)
@@ -17,19 +30,19 @@ with open('./data/driving_log.csv') as csvfile:
 
 images = []
 measurements = []
+folder = './data/IMG'
 for line in lines:
     source_path = line[0]
     if source_path == 'center':
         continue
-    img_name = source_path.split('/')[-1]
-    curr_path = './data/IMG/' + img_name
-    image = cv2.imread(curr_path)
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    img = cropImg(image)
-    images.append(img)
-    measurement = float(line[-4])
-    measurements.append(measurement)
-
+    
+    # measurement shift: center: 0, left : +0.2, right : -0.2 
+    m_shift = [0, 0.2, -0.2]
+    for i in range(3): # 0: center 1: left 2: right
+        mea = float(line[-4]) + m_shift[i]
+        fname = line[i].split('/')[-1]
+        handleImg(folder, fname, images, mea, measurements)
+        
 X_train = np.array(images)
 y_train = np.array(measurements)
 

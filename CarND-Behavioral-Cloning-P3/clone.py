@@ -28,6 +28,9 @@ model.add(Dropout(drop_rt))
 model.add(Conv2D(filters=16, kernel_size=(5,5), padding='same', activation='relu'))  
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(drop_rt))
+model.add(Conv2D(filters=28, kernel_size=(5,5), padding='same', activation='relu'))  
+model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Dropout(drop_rt))
 
 model.add(Flatten())
 model.add(Dense(120))
@@ -39,7 +42,7 @@ model.add(Dropout(drop_rt))
 model.add(Dense(1))
 
 model.compile(loss = 'mse', optimizer = 'adam')
-model.fit(X_train, y_train, validation_split = 0.2, shuffle = True, epochs = 2)
+model.fit(X_train, y_train, validation_split = 0.2, shuffle = True, epochs = 3)
 
 model.save('model.h5')
 exit()
