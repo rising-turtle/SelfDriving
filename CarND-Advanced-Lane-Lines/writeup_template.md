@@ -24,7 +24,7 @@ The goals / steps of this project are the following:
 [image2]: ./output_images/threshod.png "Thresh Comparison"
 [image3]: ./output_images/threshod2.png "Binary Example"
 [image4]: ./output_images/birdeye-view.png "Warp Example"
-[image5]: ./output_images/lane_linae.png "Fit Visual"
+[image5]: ./output_images/lane_line.png "Fit Visual"
 [image6]: ./output_images/lane_detection.png "Output"
 [image7]: ./output_images/lane_detection2.png "Output2"
 [video1]: ./output_images/project_video.mp4 "Video"
@@ -57,14 +57,12 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 #### 1. Provide an example of a distortion-corrected image.
 
-# To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-# ![alt text][image2]
-
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
 I separately tested the result using gradient x, gradient magnitude, gradient direction and color threshold in 'S' space: 
 ![alt text][image2]
-This figure indicates that using color threshold can retain the major part of the lane line and the missed part can be retrived by using the gradient threshod. The result from gradient x and gradient magitude seems similar. Therefore, I used a combination of color, gradient magnitude and gradient direction to generate a binary image. This step is implemtned in the 2nd code cell of the notebook. Here is an example of my output for this step:![alt text][image3]
+This figure indicates that using color threshold can retain the major part of the lane line and the missed part can be retrived by using the gradient threshod. The result from gradient x and gradient magitude seems similar. Therefore, I used a combination of color, gradient magnitude and gradient direction to generate a binary image. This step is implemtned in the 2nd code cell of the notebook. Here is an example of my output for this step:
+![alt text][image3]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
@@ -125,6 +123,7 @@ Then I wraped up all the above modules in the class Line in the 11th code cell, 
 
 Here is a [link to my video result](./output_images/solidYellowLeft.mp4)
 
+![alt text][video1]
 ---
 
 ### Discussion
@@ -132,4 +131,3 @@ Here is a [link to my video result](./output_images/solidYellowLeft.mp4)
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
 Now the problem is that sometimes the lane jumps, which might be relieved by using smooth method. 
-
