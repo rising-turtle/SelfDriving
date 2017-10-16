@@ -110,9 +110,11 @@ I did this in the the 8th and 9th code cell in my notebook.
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
 In the 10th cell, I demonstarte the output of the implemented pipeline using an image "./test_images/test1.jpg", showing as: 
+
 ![alt text][image6]
 
 Then I wraped up all the above modules in the class Line in the 11th code cell, which tightly implemented the pipelines in the function lane_line_detect(). Next, in the 12th code cell, I tested this function with the input image "./test_images/test1.jpg", and got the result showing as:
+
 ![alt text][image7]
 
 ---
