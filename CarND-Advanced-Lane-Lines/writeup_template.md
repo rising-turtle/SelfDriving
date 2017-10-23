@@ -21,7 +21,7 @@ The goals / steps of this project are the following:
 [image2]: ./output_images/threshod.png "Thresh Comparison"
 [image3]: ./output_images/threshod2.png "Binary Example"
 [image4]: ./output_images/birdeye-view.png "Warp Example"
-[image5]: ./output_images/lane_linae.png "Fit Visual"
+[image5]: ./output_images/lane_line.png "Fit Visual"
 [image6]: ./output_images/lane_detection.png "Output"
 [image7]: ./output_images/lane_detection2.png "Output2"
 [video1]: ./output_images/project_video.mp4 "Video"
@@ -54,9 +54,6 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 #### 1. Provide an example of a distortion-corrected image.
 
-# To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one: (TODO)
-
-
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
 [image2]: ./output_images/threshod.png "Thresh Comparison"
@@ -65,6 +62,7 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 I separately tested the result using gradient x, gradient magnitude, gradient direction and color threshold in 'S' space: 
 ![alt text][image2]
+
 This figure indicates that using color threshold can retain the major part of the lane line and the missed part can be retrived by using the gradient threshod. The result from gradient x and gradient magitude seems similar. Therefore, I used a combination of color, gradient magnitude and gradient direction to generate a binary image. This step is implemtned in the 2nd code cell of the notebook. Here is an example of my output for this step: 
 ![alt text][image3]
 
@@ -122,9 +120,11 @@ I did this in the the 8th and 9th code cell in my notebook.
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
 In the 10th cell, I demonstarte the output of the implemented pipeline using an image "./test_images/test1.jpg", showing as: 
+
 ![alt text][image6]
 
 Then I wraped up all the above modules in the class Line in the 11th code cell, which tightly implemented the pipelines in the function lane_line_detect(). Next, in the 12th code cell, I tested this function with the input image "./test_images/test1.jpg", and got the result showing as:
+
 ![alt text][image7]
 
 ---
@@ -135,6 +135,7 @@ Then I wraped up all the above modules in the class Line in the 11th code cell, 
 
 Here is a [link to my video result](./output_images/solidYellowLeft.mp4)
 
+![alt text][video1]
 ---
 
 ### Discussion
@@ -142,3 +143,4 @@ Here is a [link to my video result](./output_images/solidYellowLeft.mp4)
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
 The results show that using color threshold (yellow & white) superiors to using gradient threshold (magnitude & orientation), which weaks the significance of gradient. However, as discussed in the course, lane detection using color is subject to illumination, which may varies in different weather conditions, such as snow, rain or foggy. In these cases, the color based method may fail. Further stategies are needed for improvement. 
+
