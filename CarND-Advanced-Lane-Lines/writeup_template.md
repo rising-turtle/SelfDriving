@@ -2,8 +2,6 @@
 
 ### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
 
----
-
 **Advanced Lane Finding Project**
 
 The goals / steps of this project are the following:
@@ -20,7 +18,6 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./output_images/undistorted.png "Undistorted"
-# [image2]: ./output_images/test1.jpg "Road Transformed"
 [image2]: ./output_images/threshod.png "Thresh Comparison"
 [image3]: ./output_images/threshod2.png "Binary Example"
 [image4]: ./output_images/birdeye-view.png "Warp Example"
@@ -57,18 +54,26 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 #### 1. Provide an example of a distortion-corrected image.
 
-# To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-# ![alt text][image2]
+# To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one: (TODO)
+
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
+[image2]: ./output_images/threshod.png "Thresh Comparison"
+[image3]: ./output_images/threshod2.png "Binary Example"
+[image_color]: ./output_images/color_threshod.png "Color Thresh"
+
 I separately tested the result using gradient x, gradient magnitude, gradient direction and color threshold in 'S' space: 
 ![alt text][image2]
-This figure indicates that using color threshold can retain the major part of the lane line and the missed part can be retrived by using the gradient threshod. The result from gradient x and gradient magitude seems similar. Therefore, I used a combination of color, gradient magnitude and gradient direction to generate a binary image. This step is implemtned in the 2nd code cell of the notebook. Here is an example of my output for this step:![alt text][image3]
+This figure indicates that using color threshold can retain the major part of the lane line and the missed part can be retrived by using the gradient threshod. The result from gradient x and gradient magitude seems similar. Therefore, I used a combination of color, gradient magnitude and gradient direction to generate a binary image. This step is implemtned in the 2nd code cell of the notebook. Here is an example of my output for this step: 
+![alt text][image3]
+
+As advised by reviewers, using color threshold, specifically extracting yellow & white pixels, can robustly detect lane line even in shadows. One example is shown below: 
+![alt_text][image_color]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform is written in the 3rd cell of the notebook, which  includes a function called `warper()`, which first choose four point pairs named as [src, dst] to compute the transformation matrix and second use this matrix to transform a image in the birdeye view. I chose the hardcode the source and destination points in the following manner:
+The code for my perspective transform is written in the 4th cell of the notebook, which  includes a function called `warper()`, which first choose four point pairs named as [src, dst] to compute the transformation matrix and second use this matrix to transform a image in the birdeye view. I chose the hardcode the source and destination points in the following manner:
 
 ```python
 top_left_src = [565,470]
@@ -94,6 +99,11 @@ This resulted in the following source and destination points:
 | 720, 470      | 980, 0        |
 | 1130, 720     | 980, 720      |
 | 200, 720      | 320, 720      |
+
+[image4]: ./output_images/birdeye-view.png "Warp Example"
+[image5]: ./output_images/lane_linae.png "Fit Visual"
+[image6]: ./output_images/lane_detection.png "Output"
+[image7]: ./output_images/lane_detection2.png "Output2"
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
@@ -131,5 +141,4 @@ Here is a [link to my video result](./output_images/solidYellowLeft.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Now the problem is that sometimes the lane jumps, which might be relieved by using smooth method. 
-
+The results show that using color threshold (yellow & white) superiors to using gradient threshold (magnitude & orientation), which weaks the significance of gradient. However, as discussed in the course, lane detection using color is subject to illumination, which may varies in different weather conditions, such as snow, rain or foggy. In these cases, the color based method may fail. Further stategies are needed for improvement. 
