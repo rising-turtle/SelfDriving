@@ -16,6 +16,9 @@ public:
 
   // process covariance matrix
   Eigen::MatrixXd Q_;
+  
+  // acceleration covariance matrix 
+  Eigen::MatrixXd Qa_; 
 
   // measurement matrix
   Eigen::MatrixXd H_;
@@ -63,6 +66,9 @@ public:
    * @param z The measurement at k+1
    */
   void UpdateEKF(const Eigen::VectorXd &z);
+  
+  // given current state, expect measurement 
+  Eigen::VectorXd h(const Eigen::VectorXd &x); 
 
 };
 
