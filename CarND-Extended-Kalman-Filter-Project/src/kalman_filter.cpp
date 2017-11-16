@@ -72,7 +72,7 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   VectorXd y = z - z_pred; 
   y(1) = angle_sub(z(1), z_pred(1)); // angle difference needs specific handling
 
-  std::cout<<" z_pred: "<<z_pred<<std::endl << " z_meas: "<<z<<std::endl<<" y: "<<y<<std::endl;
+  // std::cout<<" z_pred: "<<z_pred<<std::endl << " z_meas: "<<z<<std::endl<<" y: "<<y<<std::endl;
 
   MatrixXd Ht = H_.transpose(); 
   MatrixXd S  = H_ * P_ * Ht + R_;
