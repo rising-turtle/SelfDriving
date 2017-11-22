@@ -2,6 +2,7 @@
 #include <iostream>
 #include "json.hpp"
 #include <math.h>
+#include <fstream>
 #include "ukf.h"
 #include "tools.h"
 
@@ -37,6 +38,10 @@ int main()
   Tools tools;
   vector<VectorXd> estimations;
   vector<VectorXd> ground_truth;
+
+  // two files to save NIS value 
+  // ofstream laser_ouf("laser_NIS.txt");
+  // ofstream radar_ouf("radar_NIS.txt");
 
   h.onMessage([&ukf,&tools,&estimations,&ground_truth](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
@@ -139,7 +144,25 @@ int main()
           auto msg = "42[\"estimate_marker\"," + msgJson.dump() + "]";
           // std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
-	  
+	
+
+    	  if (sensor_type.compare("L") == 0) 
+          {
+            if(ukf.laser_nis_.size() > 0)
+            {
+              // cout <<" sensor_type = L "<<endl;
+              // laser_ouf << ukf.laser_nis_[ukf.laser_nis_.size()-1] << endl;  
+              // laser_ouf.flush();
+            }
+          }else
+          {
+            if(ukf.radar_nis_.size() > 0)
+            {
+              // cout <<"sensor_type = R "<<endl;
+              // radar_ouf << ukf.radar_nis_[ukf.radar_nis_.size()-1] << endl; 
+              // radar_ouf.flush();
+            }
+          }
         }
       } else {
         
@@ -149,6 +172,20 @@ int main()
     }
 
   });
+  /*
+  for(int i=0; i<ukf.radar_nis_.size(); i++)
+  {
+    cout <<"ukf: write radar nis i "<<i<<" = "<<ukf.radar_nis_[i]<<endl;
+    radar_ouf << ukf.radar_nis_[i]<<endl; 
+  }
+  for(int i=0; i<ukf.laser_nis_.size(); i++)
+  {
+    laser_ouf << ukf.laser_nis_[i]<<endl;
+  }
+
+  laser_ouf.close();
+  radar_ouf.close();
+*/
 
   // We don't need this since we're not using HTTP but if it's removed the program
   // doesn't compile :-(

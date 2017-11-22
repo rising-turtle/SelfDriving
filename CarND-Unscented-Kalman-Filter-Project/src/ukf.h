@@ -54,6 +54,9 @@ public:
   ///* NIS 
   std::vector<double> laser_nis_;
   std::vector<double> radar_nis_;
+  
+  std::ofstream* laser_ouf_; // save into txt file
+  std::ofstream* radar_ouf_;
 
   ///* time when the state is true, in us
   long long time_us_;
