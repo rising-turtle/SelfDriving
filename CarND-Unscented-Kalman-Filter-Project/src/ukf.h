@@ -22,14 +22,38 @@ public:
   ///* if this is false, radar measurements will be ignored (except for init)
   bool use_radar_;
 
+  ///* timestamp 
+  long long previous_timestamp_; 
+
   ///* state vector: [pos1 pos2 vel_abs yaw_angle yaw_rate] in SI units and rad
   VectorXd x_;
 
+  ///* augmented state_vector : [state_vector, std_a, std_yawdd_]
+  VectorXd x_aug_; 
+  
   ///* state covariance matrix
   MatrixXd P_;
+  
+  ///* augmented state covariance matrix
+  MatrixXd P_aug_;
 
   ///* predicted sigma points matrix
   MatrixXd Xsig_pred_;
+  
+  ///* augmented predicted sigma points matrix 
+  MatrixXd Xsig_aug_;
+
+  ///* process noise matrix
+  MatrixXd Q_; 
+  
+  ///* measurement noise matrix
+  MatrixXd R_; 
+  MatrixXd R_radar_; 
+  MatrixXd R_laser_;
+
+  ///* NIS 
+  std::vector<double> laser_nis_;
+  std::vector<double> radar_nis_;
 
   ///* time when the state is true, in us
   long long time_us_;
@@ -83,6 +107,11 @@ public:
    * @param meas_package The latest measurement data of either radar or laser
    */
   void ProcessMeasurement(MeasurementPackage meas_package);
+
+  /**
+   * Generate sigma points 
+   */
+  void GenerateSigPoints(); 
 
   /**
    * Prediction Predicts sigma points, the state, and the state covariance
