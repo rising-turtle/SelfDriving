@@ -28,7 +28,7 @@ UKF::UKF() {
   std_a_ = 1; // 2  30 
 
   // Process noise standard deviation yaw acceleration in rad/s^2
-  std_yawdd_ = 2; // 2 30
+  std_yawdd_ = 0.7; // 2 30
 
   // Laser measurement noise standard deviation position1 in m
   std_laspx_ = 0.15;
@@ -148,7 +148,7 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
 
     // init P and P_AUG
     MatrixXd I = MatrixXd::Identity(n_x_, n_x_); 
-    P_ = I*10;
+    P_ = I;
 
     previous_timestamp_ = meas_package.timestamp_;
     is_initialized_ = true;  
