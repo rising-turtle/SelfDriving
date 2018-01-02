@@ -12,7 +12,7 @@
 #include "helper_functions.h"
 #include "map.h"
 
-const int N_PARTICLES = 800; 
+const int N_PARTICLES = 100; 
 
 struct Particle {
 

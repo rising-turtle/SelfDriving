@@ -50,6 +50,7 @@ void ParticleFilter::init(double x, double y, double theta, double std[]) {
 	    p.y = dist_y(gen);
 	    p.theta = dist_theta(gen); 
 	    p.weight = weights[i]; 
+	    particles[i] = p;
 	}
 	is_initialized = true; 
 	cout <<"particle_filter: succeed to sample "<<num_particles<<" particles!"<<endl;
