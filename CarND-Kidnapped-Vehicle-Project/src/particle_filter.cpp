@@ -36,8 +36,9 @@ void ParticleFilter::init(double x, double y, double theta, double std[]) {
 
 	particles.resize(num_particles); 
 	weights.resize(num_particles, 1.0); 
-
-	default_random_engine gen; 
+	
+        random_device rd;
+	default_random_engine gen(rd()); 
 	normal_distribution<double> dist_x(x, std[0]);
 	normal_distribution<double> dist_y(y, std[1]);
 	normal_distribution<double> dist_theta(theta, std[2]); 
@@ -187,6 +188,25 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
     }
 }
 
+void ParticleFilter::resample()
+{
+    random_device seed;
+    mt19937 random_generator(seed()); 
+    
+    // sample particles based on their weight
+    discrete_distribution<> sample(weights.begin(), weights.end()); 
+    
+    vector<Particle> new_p(num_particles); 
+    
+    for(auto &p : new_p)
+    {
+	p = particles[sample(random_generator)]; 
+    }
+    particles = std::move(new_p);
+    return ; 
+}
+
+/*
 void ParticleFilter::resample() {
 	// TODO: Resample particles with replacement with probability proportional to their weight. 
 	// NOTE: You may find std::discrete_distribution helpful here.
@@ -218,7 +238,7 @@ void ParticleFilter::resample() {
 	particles.swap(new_p); 
 	weights.swap(new_w); 
 	return ; 
-}
+}*/
 
 Particle ParticleFilter::SetAssociations(Particle& particle, const std::vector<int>& associations, 
                                      const std::vector<double>& sense_x, const std::vector<double>& sense_y)
