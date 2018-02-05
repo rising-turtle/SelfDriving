@@ -9,6 +9,8 @@
 #include "MPC.h"
 #include "json.hpp"
 
+#define SQ(x) ((x)*(x))
+
 // for convenience
 using json = nlohmann::json;
 
@@ -40,6 +42,7 @@ double polyeval(Eigen::VectorXd coeffs, double x) {
   }
   return result;
 }
+
 
 // Fit a polynomial.
 // Adapted from
@@ -77,7 +80,7 @@ int main() {
     // The 4 signifies a websocket message
     // The 2 signifies a websocket event
     string sdata = string(data).substr(0, length);
-    cout << sdata << endl;
+    // cout << sdata << endl;
     if (sdata.size() > 2 && sdata[0] == '4' && sdata[1] == '2') {
       string s = hasData(sdata);
       if (s != "") {
@@ -91,6 +94,45 @@ int main() {
           double py = j[1]["y"];
           double psi = j[1]["psi"];
           double v = j[1]["speed"];
+	  
+	  // convert from global to local 
+	  vector<double> lptsx = ptsx;
+	  vector<double> lptsy = ptsy; 
+	  double cs = cos(psi);
+	  double ss = sin(psi); 
+	  for(int i=0; i<lptsx.size(); i++)
+	  {
+	    double dx = ptsx[i] - px;
+	    double dy = ptsy[i] - py; 
+	    lptsx[i] = cs * dx + ss * dy; 
+	    lptsy[i] = -ss * dx + cs * dy; 
+	  }
+
+	  // The polynomial is fitted to a straight line so a polynomial with
+	  Eigen::VectorXd Eptsx(ptsx.size());
+	  Eigen::VectorXd Eptsy(ptsy.size());
+	  for(int i=0; i<lptsx.size(); i++)
+	  {
+	    Eptsx(i) = lptsx[i];
+	    Eptsy(i) = lptsy[i]; 
+	  }
+
+	  // compute cte, 
+	  Eigen::VectorXd state(6); 
+	  auto coeffs = polyfit(Eptsx, Eptsy, 3);
+          // double cte = polyeval(coeffs, px) - py;
+	  double cte = polyeval(coeffs, 0); 
+	  // derivative of coeffs[0] + coeffs[1] * x  + coeffs[2]*x^2 + coeffs[3] *x^3-> coeffs[1]
+	  // derivative of coeffs[0] + coeffs[1] * x  + coeffs[2]*x^2 
+	  // double dy = coeffs[1] + 2*px*coeffs[2] + 3*coeffs[3]*SQ(px); 
+	  double dy = coeffs[1]; // since px = 0 
+	  // double dy = coeffs[1] + 2*px*coeffs[2]; 
+	  // double epsi = psi - atan(dy);
+	  double epsi = 0 - atan(dy); 
+	  
+	  // initial state
+	  // state << px, py, psi, v, cte, epsi; 
+	  state << 0, 0, 0, v, cte, epsi; 
 
           /*
           * TODO: Calculate steering angle and throttle using MPC.
@@ -98,14 +140,21 @@ int main() {
           * Both are in between [-1, 1].
           *
           */
+	  auto vars = mpc.Solve(state, coeffs); 
+
           double steer_value;
           double throttle_value;
+	  
+	  steer_value = vars[0]; 
+	  throttle_value = vars[1]; 
+	  double vel = vars[2]; 
 
           json msgJson;
           // NOTE: Remember to divide by deg2rad(25) before you send the steering value back.
           // Otherwise the values will be in between [-deg2rad(25), deg2rad(25] instead of [-1, 1].
-          msgJson["steering_angle"] = steer_value;
+          msgJson["steering_angle"] = rad2deg(-steer_value)/25.;
           msgJson["throttle"] = throttle_value;
+	  cout <<" steering_angle: "<<rad2deg(steer_value)<<" throttle: "<<throttle_value<<" velocity: "<<vel<<endl;
 
           //Display the MPC predicted trajectory 
           vector<double> mpc_x_vals;
@@ -113,6 +162,9 @@ int main() {
 
           //.. add (x,y) points to list here, points are in reference to the vehicle's coordinate system
           // the points in the simulator are connected by a Green line
+	  
+	  mpc_x_vals = mpc.mpc_ptsx;
+	  mpc_y_vals = mpc.mpc_ptsy; 
 
           msgJson["mpc_x"] = mpc_x_vals;
           msgJson["mpc_y"] = mpc_y_vals;
@@ -124,12 +176,23 @@ int main() {
           //.. add (x,y) points to list here, points are in reference to the vehicle's coordinate system
           // the points in the simulator are connected by a Yellow line
 
+	  // next_x_vals = lptsx;
+	  // next_y_vals = lptsy;
+	  for(float x = lptsx[0]; x < lptsx[lptsx.size()-1]; x+= 2.0)
+	  {
+	    if(x > 0)
+	    {
+		next_x_vals.push_back(x); 
+		next_y_vals.push_back(polyeval(coeffs, x)); 
+	    }
+	  } 
+
           msgJson["next_x"] = next_x_vals;
           msgJson["next_y"] = next_y_vals;
 
 
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
-          std::cout << msg << std::endl;
+          // std::cout << msg << std::endl;
           // Latency
           // The purpose is to mimic real driving conditions where
           // the car does actuate the commands instantly.
