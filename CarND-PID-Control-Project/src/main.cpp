@@ -34,9 +34,9 @@ int main()
 
   PID pid;
   // TODO: Initialize the pid variable.
-  double Kp = 0.2;
-  double Ki = 0.0001;
-  double Kd = 4.;
+  double Kp = 0.4; // 0.9; // 1.0; // 0.2;
+  double Ki = 0.00105; // 0.01; // 0.0001;
+  double Kd = 4.448; // 1.8; // 4.;
   pid.Init(Kp, Ki, Kd);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
@@ -64,7 +64,6 @@ int main()
           
 	  pid.UpdateError(cte); 
 	  steer_value = pid.computeSteerValue(); 
-	  
 
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
