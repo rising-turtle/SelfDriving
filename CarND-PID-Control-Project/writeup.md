@@ -6,6 +6,10 @@ The goals / steps of this project are the following:
 * Designa a process to tune the coefficients of P,I,D terms
 * Reflect on the effects of P,I,D terms, and describe the process to tune these coefficients. 
 
+[//]: # (Image References)
+
+[image1]: ./screen_snap/twiddle.jpg "twiddle"
+
 ---
 
 ### Reflection
@@ -36,9 +40,5 @@ However, with these parameters, the vehicle experience heavy swing in the end pa
 
 The screen snap of the result of third run is shown below: 
 
-[//]: # (Image References)
 
-[image1]: ./screen_snap/twiddle.jpg "twiddle"
-
-
-
+![alt_text][image1]
