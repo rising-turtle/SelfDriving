@@ -30,7 +30,7 @@ By obversing that the Ki is still too large to make the vehicle steers heavily, 
 
 In the second run, initially Kp = 1.0, Ki = 0.001, Kd = 1.8; dp = 1.0, 0.0005, 1.0, N = 450, and the final output Kp = 0.9, Ki = 0.00205, Kd = 4.448;
 
-In the third run, initially Kp = 0.9, Ki = 0.00205, Kd = 4.448; dp = 0.4, 0.001, 2., N = 650, and the final output Kp = 0.9 , Ki = 0.00105, Kd = 448;
+In the third run, initially Kp = 0.9, Ki = 0.00205, Kd = 4.448; dp = 0.4, 0.001, 2., N = 650, and the final output Kp = 0.9 , Ki = 0.00105, Kd = 4.448;
 
 However, with these parameters, the vehicle experience heavy swing in the end part of the road. So I decrease Kp = 0.4, and it works finally.
 
@@ -38,7 +38,7 @@ The screen snap of the result of third run is shown below:
 
 [//]: # (Image References)
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
+[image1]: ./screen_snap/twiddle.jpg "twiddle"
 
 
 
