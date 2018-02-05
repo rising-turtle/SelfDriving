@@ -43,6 +43,14 @@ double polyeval(Eigen::VectorXd coeffs, double x) {
   return result;
 }
 
+double Now()
+{
+  auto now = std::chrono::system_clock::now().time_since_epoch();
+  return now.count() / 1e9;
+}
+
+double g_last_t = -1; 
+double g_last_a = 0; // last acceleration 
 
 // Fit a polynomial.
 // Adapted from
@@ -140,6 +148,21 @@ int main() {
           * Both are in between [-1, 1].
           *
           */
+	
+	  // estimate vehicle's state by a latency 
+	  double cur_t = Now(); 
+	  double dt = cur_t - g_last_t; 
+	  if(g_last_t == -1)
+	     dt = 0;
+	  // cout <<fixed<<"last_t: "<<g_last_t<<" cur_t: "<<cur_t<< "dt = "<<dt<<endl;
+	  g_last_t = cur_t; 
+	  double acc0 = g_last_a; 
+	  double steer0 = j[1]["steering_angle"]; 
+	  state(0) = v  * dt;
+	  state(1) = 0; 
+	  state(2) = v /2.67 * tan(-steer0) * dt; 
+	  state(3) = v + acc0 * dt; 
+
 	  auto vars = mpc.Solve(state, coeffs); 
 
           double steer_value;
@@ -154,6 +177,8 @@ int main() {
           // Otherwise the values will be in between [-deg2rad(25), deg2rad(25] instead of [-1, 1].
           msgJson["steering_angle"] = rad2deg(-steer_value)/25.;
           msgJson["throttle"] = throttle_value;
+
+	  g_last_a = throttle_value; 
 	  cout <<" steering_angle: "<<rad2deg(steer_value)<<" throttle: "<<throttle_value<<" velocity: "<<vel<<endl;
 
           //Display the MPC predicted trajectory 
