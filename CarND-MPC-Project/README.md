@@ -1,6 +1,8 @@
 # CarND-Controls-MPC
 Self-Driving Car Engineer Nanodegree Program
 
+A better solution that added time lag can be found here https://github.com/malichao/Model-Predictive-Control
+
 ---
 
 ## Dependencies
