@@ -43,6 +43,10 @@ double polyeval(Eigen::VectorXd coeffs, double x) {
   return result;
 }
 
+
+double mph2ms(double x) { return x * 0.447; }
+double ms2mph(double x) { return x / 0.447; }
+
 double Now()
 {
   auto now = std::chrono::system_clock::now().time_since_epoch();
@@ -158,10 +162,11 @@ int main() {
 	  g_last_t = cur_t; 
 	  double acc0 = g_last_a; 
 	  double steer0 = j[1]["steering_angle"]; 
-	  state(0) = v  * dt;
+	  double vms = mph2ms(v); 
+	  state(0) = vms  * dt;
 	  state(1) = 0; 
-	  state(2) = v /2.67 * tan(-steer0) * dt; 
-	  state(3) = v + acc0 * dt; 
+	  state(2) = vms /2.67 * tan(-steer0) * dt; 
+	  state(3) = vms + acc0 * dt; 
 
 	  auto vars = mpc.Solve(state, coeffs); 
 
