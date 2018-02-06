@@ -5,6 +5,8 @@ The goals / steps of this project are the following:
 * Design a PID controller that guides a vehicle to drive along the road
 * Designa a process to tune the coefficients of P,I,D terms
 * Reflect on the effects of P,I,D terms, and describe the process to tune these coefficients. 
+* Some external resources http://f1tenth.org/session2#l1-3
+
 
 [//]: # (Image References)
 
