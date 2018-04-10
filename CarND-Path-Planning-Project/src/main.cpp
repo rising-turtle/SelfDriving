@@ -15,8 +15,8 @@
 using namespace std;
 
 constexpr double pi() { return M_PI; }
-
-vector<CVehicle> predict(auto& sensor_fusion, double t)
+/*
+vector<CVehicle> predict(vector<vector<double> >& sensor_fusion, double t)
 {
     vector<CVehicle> ret; 
     for(int i=0; i<sensor_fusion.size(); i++)
@@ -36,7 +36,7 @@ vector<CVehicle> predict(auto& sensor_fusion, double t)
 	ret.push_back(vehicle); 
     }
     return ret; 
-}
+}*/
 
 
 // for convenience
@@ -153,7 +153,30 @@ int main() {
 		
 		// use other vehicle's information to estimate the best ref_vel and lane 
 		CVehicle ego_car(0, car_x, car_y, car_s, car_d, car_speed); 
-		vector<CVehicle> car_predictions = predict(sensor_fusion, (double)prev_size*0.02); 
+		// vector<CVehicle> car_predictions = predict(sensor_fusion, (double)prev_size*0.02); 
+		vector<CVehicle> car_predictions; // = predict(sensor_fusion, (double)prev_size*0.02); 
+
+		double elapse_t = (double)prev_size*0.02; 
+		vector<CVehicle> ret; 
+		for(int i=0; i<sensor_fusion.size(); i++)
+		{
+		    // assume in the next timestamp, vehicle do not change lanes and speed
+		    double vx = sensor_fusion[i][3];
+		    double vy = sensor_fusion[i][4]; 
+		    double s = sensor_fusion[i][5]; 
+		    double d = sensor_fusion[i][6]; 
+		    double x = sensor_fusion[i][1];
+		    double y = sensor_fusion[i][2]; 
+		    int id = (int)sensor_fusion[i][0];
+		    double v = sqrt(vx*vx + vy*vy);
+		    // CVehicle vehicle(id, x, y, s, d, vx, vy); 
+		    CVehicle vehicle(id, x, y, s, d, v); 
+		    vehicle.move_at_constant_speed(elapse_t); 
+		    ret.push_back(vehicle); 
+		}
+		car_predictions = ret; 
+
+
 		ego_car.estimate(car_predictions, ref_vel, lane); 
 /*
 		for(int i=0; i < sensor_fusion.size(); i++)
