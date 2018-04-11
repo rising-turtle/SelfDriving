@@ -38,3 +38,11 @@ Some strategies are adopted:
   the equation of the spline. 
   4. Discretizing the current trajectory into several waypoints, the location (x,y) of these points are computed. The result of the waypoints 
   is the generated path. 
+  
+### More In-depth Materials
+
+http://ais.informatik.uni-freiburg.de/teaching/ss10/robotics/slides/16-pathplanning.pdf
+http://correll.cs.colorado.edu/?p=965
+http://www.coppeliarobotics.com/helpFiles/en/pathPlanningModule.htm
+https://www.cs.cmu.edu/afs/cs/project/jair/pub/volume9/mazer98a-html/node2.html
+http://www.roborealm.com/help/Path_Planning.php
