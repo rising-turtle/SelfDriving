@@ -41,8 +41,14 @@ Some strategies are adopted:
   
 ### More In-depth Materials
 
-http://ais.informatik.uni-freiburg.de/teaching/ss10/robotics/slides/16-pathplanning.pdf
-http://correll.cs.colorado.edu/?p=965
-http://www.coppeliarobotics.com/helpFiles/en/pathPlanningModule.htm
-https://www.cs.cmu.edu/afs/cs/project/jair/pub/volume9/mazer98a-html/node2.html
-http://www.roborealm.com/help/Path_Planning.php
+http://ais.informatik.uni-freiburg.de/teaching/ss10/robotics/slides/16-pathplanning.pdf   
+http://correll.cs.colorado.edu/?p=965   
+http://www.coppeliarobotics.com/helpFiles/en/pathPlanningModule.htm   
+https://www.cs.cmu.edu/afs/cs/project/jair/pub/volume9/mazer98a-html/node2.html   
+http://www.roborealm.com/help/Path_Planning.php   
+https://wesscholar.wesleyan.edu/cgi/viewcontent.cgi?referer=&httpsredir=1&article=1856&context=etd_hon_theses   
+http://www.scielo.org.co/pdf/inge/v21n2/v21n2a05.pdf    
+https://medium.com/@mohankarthik/path-planning-in-highways-for-an-autonomous-vehicle-242b91e6387d   
+https://www.sciencedirect.com/science/article/pii/S0968090X15003447   
+
+
