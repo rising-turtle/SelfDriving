@@ -139,7 +139,7 @@ def run():
 
     # parameters 
     epochs = 10
-    batch_size = 256
+    batch_size = 20
     num_classes = 2
 
     # OPTIONAL: Train and Inference on the cityscapes dataset instead of the Kitti dataset.
@@ -168,7 +168,7 @@ def run():
 
         # TODO: Save inference data using helper.save_inference_samples
         #  helper.save_inference_samples(runs_dir, data_dir, sess, image_shape, logits, keep_prob, input_image)
-        helper.save_inference_samples(runs_dir, data_dir, sess, image_shape, logits, keep_prob, input_image)
+        helper.save_inference_samples(runs_dir, data_dir, sess, image_shape, logits, kp, input_image)
 
         # OPTIONAL: Apply the trained model to a video
 
