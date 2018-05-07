@@ -56,26 +56,35 @@ def layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes):
     """
     # TODO: Implement function
     out = tf.layers.conv2d(vgg_layer7_out, num_classes, 1, (1,1), padding='same',
-                            kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3))
+                            kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3),
+                            kernel_initializer = tf.contrib.layers.xavier_initializer())
     # pool7 upsample -> pool4 
     out = tf.layers.conv2d_transpose(out, num_classes, 4, (2,2), padding='same', 
-                            kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3))
-    
+                            kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3),
+                            kernel_initializer = tf.contrib.layers.xavier_initializer())
+    out = tf.layers.batch_normalization(out, training=True)
+
     conv4 = tf.layers.conv2d(vgg_layer4_out, num_classes, 1, (1,1), padding='same', 
-                            kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3))
+                            kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3),
+                            kernel_initializer = tf.contrib.layers.xavier_initializer())
     out = tf.add(out, conv4)
 
     # pool4 upsample -> pool3
     out = tf.layers.conv2d_transpose(out, num_classes, 4, (2,2), padding='same',
-                            kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3))
+                            kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3),
+                            kernel_initializer = tf.contrib.layers.xavier_initializer())
+    out = tf.layers.batch_normalization(out, training=True)
+
     conv3 = tf.layers.conv2d(vgg_layer3_out, num_classes, 1, (1,1), padding='same', 
-                            kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3))
+                            kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3),
+                            kernel_initializer = tf.contrib.layers.xavier_initializer())
     out = tf.add(out, conv3)
 
     # pool4 upsample x8 -> original size 
     out = tf.layers.conv2d_transpose(out, num_classes, 16, (8,8), padding = 'same', 
-                            kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3))
-    
+                            kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3),
+                            kernel_initializer = tf.contrib.layers.xavier_initializer())
+    out = tf.layers.batch_normalization(out, training=True)
     return out
 tests.test_layers(layers)
 
@@ -120,7 +129,7 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
         print("\n epoch = ", epoch, ": losses: ")
         for image, label in get_batches_fn(batch_size):
             _, loss = sess.run([train_op, cross_entropy_loss], feed_dict={input_image: image, 
-                correct_label: label, keep_prob: 0.7, learning_rate: 0.001})
+                correct_label: label, keep_prob: 0.7, learning_rate: 0.0001})
             print("{:.4f}, ".format(loss))
 
     pass
@@ -139,7 +148,7 @@ def run():
 
     # parameters 
     epochs = 10
-    batch_size = 20
+    batch_size = 1
     num_classes = 2
 
     # OPTIONAL: Train and Inference on the cityscapes dataset instead of the Kitti dataset.
